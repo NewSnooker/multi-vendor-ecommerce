@@ -5,7 +5,7 @@ import { columns } from "./columns";
 import { getData } from "@/lib/getData";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
-
+export const dynamic = "force-dynamic";
 const Coupons = async () => {
   const allSales = await getData("sales");
   const session = await getServerSession(authOptions);

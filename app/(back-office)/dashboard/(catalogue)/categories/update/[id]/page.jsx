@@ -3,7 +3,7 @@ import CategoryForm from "@/components/backoffice/form/CategoryForm";
 import { getData } from "@/lib/getData";
 import React, { Suspense } from "react";
 import Loading from "@/app/api/loading"; // นำเข้า Loading component
-
+export const dynamic = "force-dynamic";
 // คอมโพเนนต์สำหรับดึงข้อมูลหมวดหมู่
 const CategoryData = async ({ id }) => {
   const category = await getData(`/categories/${id}`);
