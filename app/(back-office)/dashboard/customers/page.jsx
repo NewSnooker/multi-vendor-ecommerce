@@ -1,4 +1,3 @@
-"use client";
 import DataTable from "@/components/data-table-components/DataTable";
 import React from "react";
 import { columns } from "./columns";
