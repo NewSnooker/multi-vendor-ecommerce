@@ -1,7 +1,7 @@
 import { getData } from "@/lib/getData"
 import { Payment, columns } from "./columns"
 import { DataTable } from "./data-table"
-
+export const dynamic = "force-dynamic";
 
 export default async function DemoPage() {
   const data = await getData("categories")

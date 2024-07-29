@@ -6,7 +6,7 @@ import EmptyCart from "@/components/frontend/EmptyCart";
 
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-
+export const dynamic = "force-dynamic";
 export default function page() {
 
   const cartItems = useSelector((store) => store.cart);

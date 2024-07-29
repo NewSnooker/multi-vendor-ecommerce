@@ -3,7 +3,7 @@ import DataTable from "@/components/data-table-components/DataTable";
 import { getData } from "@/lib/getData";
 import React from "react";
 import { columns } from "./columns";
-
+export const dynamic = "force-dynamic";
 const page = async () => {
   const markets = await getData("markets");
   return (

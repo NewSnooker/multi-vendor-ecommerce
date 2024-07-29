@@ -2,7 +2,7 @@ import CartBanner from "@/components/Checkout/CartBanner";
 import StepForm from "@/components/Checkout/StepForm";
 import Steps from "@/components/Checkout/Steps";
 import React from "react";
-
+export const dynamic = "force-dynamic";
 export default function Checkout() {
   const steps = [
     {

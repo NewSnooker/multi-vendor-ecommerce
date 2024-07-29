@@ -4,7 +4,7 @@ import React from "react";
 import { columns } from "./columns";
 import { getData } from "@/lib/getData";
 import Heading from "@/components/backoffice/Heading";
-
+export const dynamic = "force-dynamic";
 const Customers = async () => {
   const customers = await getData("customers");
   return (
