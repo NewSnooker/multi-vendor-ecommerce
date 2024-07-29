@@ -1,5 +1,4 @@
 import CategoryCarousel from "@/components/frontend/CategoryCarousel";
-// import Breadcrumb from "@/components/frontend/breadcrumb";
 import { getData } from "@/lib/getData";
 import { Minus, Plus, Send, Share2, Tag } from "lucide-react";
 import Image from "next/image";
@@ -9,7 +8,7 @@ import dynamic from "next/dynamic";
 import AddToCartButton from "@/components/frontend/AddToCartButton";
 
 const NoSSRBreadcrumb = dynamic(
-  () => import("@/components/frontend/breadcrumb"),
+  () => import("@/components/frontend/Breadcrumb"),
   { ssr: false }
 );
 export default async function ProductDetailPage({ params: { slug } }) {
