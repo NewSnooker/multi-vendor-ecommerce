@@ -4,6 +4,7 @@ import { getData } from "@/lib/getData";
 import React, { Suspense } from "react";
 import { columns } from "./columns";
 import Loading from "@/app/api/loading";
+export const runtime = "edge"
 
 // คอมโพเนนต์สำหรับดึงข้อมูลหมวดหมู่
 const CategoriesData = async() => {

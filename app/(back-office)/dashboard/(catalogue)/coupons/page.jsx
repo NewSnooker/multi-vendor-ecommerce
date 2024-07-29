@@ -6,6 +6,7 @@ import { getData } from "@/lib/getData";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import Loading from "@/app/api/loading"; // นำเข้า Loading component
+export const dynamic = "force-dynamic";
 
 // คอมโพเนนต์สำหรับดึงข้อมูลคูปอง
 const CouponsData = async () => {
