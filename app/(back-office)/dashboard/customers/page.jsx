@@ -6,7 +6,7 @@ import { getData } from "@/lib/getData";
 import Heading from "@/components/backoffice/Heading";
 export const dynamic = "force-dynamic";
 
-const Customers = async () => {
+const page = async () => {
   const customers = await getData("customers");
   return (
     <div className="mt-8">
@@ -21,5 +21,4 @@ const Customers = async () => {
     </div>
   );
 };
-
-export default Customers;
+export default page;
