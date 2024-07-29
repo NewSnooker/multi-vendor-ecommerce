@@ -3,7 +3,7 @@ import FormHeader from "@/components/backoffice/FormHeader";
 import ProductForm from "@/components/backoffice/form/ProductForm";
 import { getData } from "@/lib/getData";
 import React from "react";
-
+export const dynamic = "force-dynamic";
 export default async function NewProduct() {
   try {
     const categoriesData = await getData("categories");

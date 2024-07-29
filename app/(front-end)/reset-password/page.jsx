@@ -2,7 +2,7 @@
 // import RegisterForm from "@/components/RegisterForm";
 
 import ResetPasswordForm from "@/components/frontend/ResetPasswordForm ";
-
+export const dynamic = "force-dynamic";
 export default function PasswordReset() {
   return (
     <section className="">

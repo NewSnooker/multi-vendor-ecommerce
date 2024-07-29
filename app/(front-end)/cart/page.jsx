@@ -4,24 +4,22 @@ import CartItems from "@/components/frontend/CartItems";
 import CartSubTotalCard from "@/components/frontend/CartSubTotalCard";
 import EmptyCart from "@/components/frontend/EmptyCart";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-export const dynamic = "force-dynamic";
-export default function page() {
 
-  const cartItems = useSelector((store) => store.cart);
-  console.log(cartItems);
+export const dynamic = "force-dynamic";
+
+export default function Page() {
+  const cartItems = useSelector((store) => store.cart) || [];
 
   const subTotal = cartItems.reduce((total, currentItem) => {
-    return total + currentItem.salePrice * currentItem.qty;
-  }, 0);
-  // .toFixed(2);
-  
+    return total + (currentItem.salePrice || 0) * (currentItem.qty || 0);
+  }, 0)
   return (
     <div className="px-6">
       <Breadcrumb />
       {cartItems.length > 0 ? (
-        <div className="grid grid-cols-12 gap-x-10 ">
+        <div className="grid grid-cols-12 gap-x-10">
           <CartItems cartItems={cartItems} />
           <CartSubTotalCard subTotal={subTotal} />
         </div>

@@ -2,7 +2,7 @@ import FormHeader from "@/components/backoffice/FormHeader";
 import TrainingForm from "@/components/backoffice/form/TrainingForm";
 import { getData } from "@/lib/getData";
 import React from "react";
-
+export const dynamic = "force-dynamic";
 export default async function NewTraining() {
   try {
     const categoriesData = await getData("categories");
