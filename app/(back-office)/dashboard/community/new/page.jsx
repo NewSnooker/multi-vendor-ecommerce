@@ -4,18 +4,23 @@ import { getData } from "@/lib/getData";
 import React from "react";
 
 export default async function NewTraining() {
-  const categoriesData = await getData("categories");
+  try {
+    const categoriesData = await getData("categories");
 
-  const categories = categoriesData.map((category) => {
-    return {
+    // ตรวจสอบว่า categoriesData เป็นอาร์เรย์ก่อนที่จะใช้ map
+    const categories = Array.isArray(categoriesData) ? categoriesData.map((category) => ({
       id: category.id,
       title: category.title,
-    };
-  });
-  return (
-    <div>
-      <FormHeader title="New Training" />
-      <TrainingForm categories={categories} />
-    </div>
-  );
+    })) : [];
+
+    return (
+      <div>
+        <FormHeader title="New Training" />
+        <TrainingForm categories={categories} />
+      </div>
+    );
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return <div>Error loading categories. Please try again later.</div>;
+  }
 }
