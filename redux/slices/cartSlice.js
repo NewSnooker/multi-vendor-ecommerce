@@ -4,7 +4,8 @@
 
 const { createSlice } = require("@reduxjs/toolkit");
 const initialState =
-  typeof window !== "undefined" && JSON.parse(localStorage.getItem("cart"));
+  typeof window !== "undefined" &&
+  JSON.parse(localStorage.getItem("cart")) || [];
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -23,7 +24,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.qty += 1;
       } else {
-        const newItem = { id, title, salePrice, qty: 1, imageUrl, vendorId, };
+        const newItem = { id, title, salePrice, qty: 1, imageUrl, vendorId };
         state.push(newItem);
       }
       if (typeof window !== "undefined") {
