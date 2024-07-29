@@ -13,10 +13,7 @@ export default function OverviewCards({ sales = [], products = [] }) {
       .toLocaleString()
       .padStart(2, "0") || 0;
 
-<<<<<<< HEAD
-=======
   const [hoveredIndex, setHoveredIndex] = useState(null);
->>>>>>> parent of e42e110 (status farmer)
 
   const analytics = [
     {
