@@ -5,33 +5,7 @@ import { getData } from "@/lib/getData";
 import Heading from "@/components/backoffice/Heading";
 
 const Customers = async () => {
-  const [customers, setCustomers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getData("customers");
-        setCustomers(data);
-      } catch (err) {
-        setError("Failed to fetch customers.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
+  const customers = await getData("customers");
   return (
     <div className="mt-8">
       <Heading title="Customers" />
