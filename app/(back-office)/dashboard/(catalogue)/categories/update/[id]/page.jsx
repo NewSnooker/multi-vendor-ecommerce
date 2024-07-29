@@ -5,8 +5,8 @@ import React, { Suspense } from "react";
 import Loading from "@/app/api/loading"; // นำเข้า Loading component
 
 // คอมโพเนนต์สำหรับดึงข้อมูลหมวดหมู่
-const CategoryData = ({ id }) => {
-  const category = getData(`/categories/${id}`);
+const CategoryData = async ({ id }) => {
+  const category = await getData(`/categories/${id}`);
   return <CategoryForm updateData={category} />;
 };
 
