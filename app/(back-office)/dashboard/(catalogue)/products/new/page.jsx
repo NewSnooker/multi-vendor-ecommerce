@@ -5,27 +5,31 @@ import { getData } from "@/lib/getData";
 import React from "react";
 
 export default async function NewProduct() {
-  const categoriesData = await getData("categories");
-  const userData = await getData("users");
-  const farmersData = userData.filter((user) => user.role === "FARMER");
+  try {
+    const categoriesData = await getData("categories");
+    const userData = await getData("users");
 
-  const farmers = farmersData.map((farmer) => {
-    return {
+    // ตรวจสอบว่า userData เป็นอาร์เรย์ก่อนที่จะใช้ filter
+    const farmersData = Array.isArray(userData) ? userData.filter((user) => user.role === "FARMER") : [];
+
+    const farmers = farmersData.map((farmer) => ({
       id: farmer.id,
       title: farmer.name,
-    };
-  });
+    }));
 
-  const categories = categoriesData.map((category) => {
-    return {
+    const categories = categoriesData.map((category) => ({
       id: category.id,
       title: category.title,
-    };
-  });
-  return (
-    <div>
-      <FormHeader title="New Product" />
-      <ProductForm categories={categories} farmers={farmers} />{" "}
-    </div>
-  );
+    }));
+
+    return (
+      <div>
+        <FormHeader title="New Product" />
+        <ProductForm categories={categories} farmers={farmers} />
+      </div>
+    );
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return <div>Error loading data. Please try again later.</div>;
+  }
 }
