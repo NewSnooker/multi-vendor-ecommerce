@@ -45,7 +45,7 @@ export async function POST(request) {
 
     if (role === "USER") {
       const userId = newUser.id;
-      await db.userProfile.create({
+      const newUserProfile = await db.userProfile.create({
         data: {
           name,
           emailAddress:email,
@@ -68,8 +68,8 @@ export async function POST(request) {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: process.env.NODEMAILER_USER,
-          pass: process.env.NODEMAILER_PASSWORD,
+          user: process.env.USER,
+          pass: process.env.APP_PASSWORD,
         },
       });
 
@@ -78,7 +78,7 @@ export async function POST(request) {
       );
 
       const options = {
-        from: `${process.env.NAME_WEBSITE} <${process.env.NODEMAILER_USER}>`,
+        from: `${process.env.NAME_WEBSITE} <${process.env.USER}>`,
         to: email,
         subject: subject,
         html: emailHtml,

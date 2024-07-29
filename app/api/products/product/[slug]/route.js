@@ -7,9 +7,6 @@ export async function GET(request, { params: { slug } }) {
       where: {
         slug,
       },
-      include: {
-        imagesUrl: true,
-      },
     });
     if (!existingProduct) {
       return NextResponse.json(

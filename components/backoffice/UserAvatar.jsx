@@ -20,24 +20,12 @@ export default function UserAvatar({ user = {} }) {
   const { name, image } = user;
   const initial = generateInitials(name);
   const role = user?.role;
-  const status = user?.status;
 
   // console.log("user",user);
   const handleLogout = async () => {
     await signOut();
     router.push("/");
   };
-
-  let showEditProfile = false;
-
-  if (role === "FARMER" && status === true) {
-    showEditProfile = true; // Show for FARMER with active status
-  } else if (role === "ADMIN") {
-    showEditProfile = true; // Show for ADMIN
-  } else if (role === "USER") {
-    showEditProfile = true; // Show for USER
-  }
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -67,19 +55,15 @@ export default function UserAvatar({ user = {} }) {
             <span>Dashboard</span>
           </Link>
         </DropdownMenuItem>
-
-        {showEditProfile && (
-          <DropdownMenuItem>
-            <Link
-              href="/dashboard/profile"
-              className="flex justify-center space-x-2"
-            >
-              <User className="mr-2 h-4 w-4" />
-              <span>Edit Profile</span>
-            </Link>
-          </DropdownMenuItem>
-        )}
-
+        <DropdownMenuItem>
+          <Link
+            href="/dashboard/profile"
+            className=" flex justify-center space-x-2"
+          >
+            <User className="mr-2 h-4 w-4" />
+            <span>Edit Profile</span>
+          </Link>
+        </DropdownMenuItem>
         {role === "USER" && (
           <DropdownMenuItem>
             <Link

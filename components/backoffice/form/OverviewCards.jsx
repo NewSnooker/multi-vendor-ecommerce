@@ -13,6 +13,10 @@ export default function OverviewCards({ sales = [], products = [] }) {
       .toLocaleString()
       .padStart(2, "0") || 0;
 
+<<<<<<< HEAD
+=======
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+>>>>>>> parent of e42e110 (status farmer)
 
   const analytics = [
     {
@@ -43,28 +47,36 @@ export default function OverviewCards({ sales = [], products = [] }) {
             <Link
               href={item.link}
               key={index}
-              className="p-4 md:w-1/4 sm:w-1/2 w-full "
+              className="p-4 md:w-1/4 sm:w-1/2 w-full"
             >
               <div
-                className={`group border-2 border-gray-600 px-4 py-4 rounded-lg transition duration-300 hover:scale-105 hover:border-gray-400 dark:hover:border-white cursor-pointer`}
+                className={`border-2 border-gray-600 px-4 py-4 rounded-lg transition duration-300 hover:scale-105 hover:border-gray-400 dark:hover:border-white cursor-pointer`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
-                  className={`inline-block mb-1 duration-300  group-hover:text-gray-400 group-hover:dark:text-gray-400" 
-                  `}
+                  className={`inline-block mb-1 duration-300 ${
+                    hoveredIndex === index ? " text-gray-400" : ""
+                  }`}
                 >
                   {item.icon}
                 </div>
-                <div className=" group-hover:font-semibold text-3xl">
+                <div className="text-3xl">
                   {" "}
                   <SlotCounter
                     value={item.count}
                     startValue="0000"
-                    valueClassName={` group-hover:-translate-y-1 group-hover:text-gray-700 group-hover:dark:text-white title-font dark:text-gray-500 duration-300 `}
+                    valueClassName={` ${
+                      hoveredIndex === index
+                        ? " text-gray-700 dark:text-white"
+                        : "title-font dark:text-gray-500  duration-300"
+                    }`}
                   ></SlotCounter>
                 </div>
                 <p
-                  className={`title-font font-medium text-xl leading-relaxed duration-300 group-hover:text-gray-400
-                  `}
+                  className={`title-font font-medium text-xl leading-relaxed duration-300 ${
+                    hoveredIndex === index ? " text-gray-400" : ""
+                  } `}
                 >
                   {item.title}
                 </p>
