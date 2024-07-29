@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import { columns } from "./columns";
 import { getData } from "@/lib/getData";
 import Loading from "@/app/api/loading";
-import { Fragment } from "react"
+export const dynamic = "force-dynamic";
 
 // คอมโพเนนต์ที่ใช้ในการดึงข้อมูลบันเนอร์
 const BannersData = async () => {
@@ -20,22 +20,19 @@ const BannersData = async () => {
 
 const Page = () => {
   return (
-    <Fragment>
-      {" "}
-      <div className="mt-8">
-        {/* Header */}
-        <PageHeader
-          heading="Banners"
-          linkTitle="Add Banners"
-          href="/dashboard/banners/new"
-        />
-        <div className="py-8">
-          <Suspense fallback={<Loading />}>
-            <BannersData />
-          </Suspense>
-        </div>
+    <div className="mt-8">
+      {/* Header */}
+      <PageHeader
+        heading="Banners"
+        linkTitle="Add Banners"
+        href="/dashboard/banners/new"
+      />
+      <div className="py-8">
+        <Suspense fallback={<Loading />}>
+          <BannersData />
+        </Suspense>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
