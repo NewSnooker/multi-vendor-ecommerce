@@ -4,9 +4,10 @@ import React, { Suspense } from "react";
 import { columns } from "./columns";
 import { getData } from "@/lib/getData";
 import Loading from "@/app/api/loading";
+import { Fragment } from "react"
 
 // คอมโพเนนต์ที่ใช้ในการดึงข้อมูลบันเนอร์
-const BannersData = async() => {
+const BannersData = async () => {
   const banners = await getData("banners");
   return (
     <DataTable
@@ -19,19 +20,22 @@ const BannersData = async() => {
 
 const Page = () => {
   return (
-    <div className="mt-8">
-      {/* Header */}
-      <PageHeader
-        heading="Banners"
-        linkTitle="Add Banners"
-        href="/dashboard/banners/new"
-      />
-      <div className="py-8">
-        <Suspense fallback={<Loading/>}>
-          <BannersData />
-        </Suspense>
+    <Fragment>
+      {" "}
+      <div className="mt-8">
+        {/* Header */}
+        <PageHeader
+          heading="Banners"
+          linkTitle="Add Banners"
+          href="/dashboard/banners/new"
+        />
+        <div className="py-8">
+          <Suspense fallback={<Loading />}>
+            <BannersData />
+          </Suspense>
+        </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
