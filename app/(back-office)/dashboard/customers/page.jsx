@@ -7,7 +7,6 @@ import Heading from "@/components/backoffice/Heading";
 
 const Customers = async () => {
   const customers = await getData("customers");
-
   return (
     <div className="mt-8">
       <Heading title="Customers" />
